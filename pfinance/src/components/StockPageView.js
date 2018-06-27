@@ -1,0 +1,46 @@
+import React from "react";
+
+const StockPageView = props => {
+  let listOfStocks = props.stockList || [];
+
+  return (
+    <div>
+      <table
+        align="center"
+        cellSpacing="1"
+        cellPadding="1"
+        id="mytable"
+        border="1"
+      >
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Volume</th>
+            <th>Timestamp</th>
+            <th>
+              <button>Add</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          {listOfStocks.map(stock => {
+            return (
+              <tr key={stock.symbol}>
+                <td>{stock.symbol}</td>
+                <td>{stock.price}</td>
+                <td>{stock.volume}</td>
+                <td>{stock.timestamp}</td>
+                <td>
+                  <button>Edit</button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default StockPageView;
