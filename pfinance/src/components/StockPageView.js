@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const StockPageView = props => {
   let listOfStocks = props.stockList || [];
@@ -7,8 +8,8 @@ const StockPageView = props => {
     <div>
       <table
         align="center"
-        cellSpacing="1"
-        cellPadding="1"
+        cellSpacing="6"
+        cellPadding="4"
         id="mytable"
         border="1"
       >
@@ -19,23 +20,23 @@ const StockPageView = props => {
             <th>Volume</th>
             <th>Timestamp</th>
             <th>
-              <button>Add</button>
+              <NavLink to="/add">Add</NavLink>
             </th>
           </tr>
         </thead>
         <tbody id="tbody">
           {listOfStocks.map(stock => {
-            return (
-              <tr key={stock.symbol}>
+            return <tr key={stock.symbol}>
                 <td>{stock.symbol}</td>
                 <td>{stock.price}</td>
                 <td>{stock.volume}</td>
                 <td>{stock.timestamp}</td>
                 <td>
-                  <button>Edit</button>
+                  <NavLink to={`/edit/${stock.symbol}`}>
+                    Edit
+                  </NavLink>
                 </td>
-              </tr>
-            );
+              </tr>;
           })}
         </tbody>
       </table>
